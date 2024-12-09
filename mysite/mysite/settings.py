@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 # Створює базовий шлях для проєкту. Використовується для побудови шляхів до файлів всередині проєкту.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',    # Система сесій для користувачів.
     'django.contrib.messages',    # Система повідомлень.
     'django.contrib.staticfiles', # Обробка статичних файлів (CSS, JavaScript, зображення).
+    'app_blog'
 ]
 
 # Налаштування посередників, що обробляють запити і відповіді в додатку.
