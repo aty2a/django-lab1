@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>Публікації</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+    <h2>Публікації</h2>
+
+    <!-- Лінк на головну сторінку -->
+    <a href="{% url 'home' %}" class="btn btn-primary">На головну</a>
+
+    {% if categories %}
+        <h3>Категорії</h3>
+        {% for item in categories %}
+            <div>
+                <a href="{{ item.get_absolute_url }}">
+                    <h4>{{ item.category }}</h4>
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if articles %}
+        <h3>Список публікацій</h3>
+        {% for item in articles %}
+            <div>
+                <a href="{{ item.get_absolute_url }}">
+                    <h4>{{ item.title }}</h4>
+                </a>
+                <h5>{{ item.pub_date|date:"j E Y" }}</h5>
+                <p>{{ item.description|truncatewords:30 }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

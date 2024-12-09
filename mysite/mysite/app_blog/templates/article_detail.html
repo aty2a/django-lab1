@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>{{ item.title }}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+    <h2>Перегляд публікації</h2>
+
+    <!-- Лінк на головну сторінку -->
+    <a href="{% url 'home' %}" class="btn btn-primary">На головну</a>
+
+    <h3>{{ item.title }}</h3>
+    <h5>{{ item.pub_date|date:"d E Y" }}</h5>
+    <p>{{ item.description }}</p>
+
+    <!-- Перегляд зображень, якщо є -->
+    {% if item.images.all %}
+        <div class="fotorama">
+            {% for image in item.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ image.description }}" data-caption="{{ image.description }}">
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Лінк назад до списку публікацій -->
+    <a href="{% url 'articles-list' %}" class="btn btn-secondary">Назад до списку</a>
+</body>
+</html>
